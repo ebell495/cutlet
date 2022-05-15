@@ -1,0 +1,8 @@
+project: cutlet
+target: cutlet
+duration: 900
+image: ghcr.io/ebell495/cutlet:latest
+
+cmds:
+    - cmd: /cutlet/fuzz/fuzz.py
+      libfuzzer: true

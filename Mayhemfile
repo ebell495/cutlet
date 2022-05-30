@@ -1,7 +1,5 @@
 project: cutlet
-target: cutlet
-duration: 900
-image: ghcr.io/ebell495/cutlet:latest
+target: fuzz
 
 cmds:
     - cmd: /cutlet/fuzz/fuzz.py

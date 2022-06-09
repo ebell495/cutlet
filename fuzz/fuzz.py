@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/local/bin/python3
 import atheris
 import sys
 with atheris.instrument_imports():
@@ -12,25 +12,24 @@ hepburn = cutlet.Cutlet("hepburn")
 
 @atheris.instrument_func
 def TestOneInput(data):
-    barray = bytearray(data)
-    if len(barray) > 0:
-        if barray[0] % 5 == 0:
-            del barray[0]
-            katsu.romaji(str(barray))
-        elif barray[0] % 5 == 1:
-            del barray[0]
-            kunrei.romaji(str(barray))
-        elif barray[0] % 5 == 2:
-            del barray[0]
-            nihon.romaji(str(barray))
-        elif barray[0] % 5 == 3:
-            del barray[0]
-            nippon.romaji(str(barray))
-        else:
-            del barray[0]
-            hepburn.romaji(str(barray))
+    fdp = atheris.FuzzedDataProvider(data)
+
+    if len(data) < 1:
+        return
+
+    option = fdp.ConsumeBytes(1)[0]
+    in_string = fdp.ConsumeUnicodeNoSurrogates(len(data))
+
+    if option % 5 == 0:
+        katsu.romaji(in_string)
+    elif option % 5 == 1:
+        kunrei.romaji(in_string)
+    elif option % 5 == 2:
+        nihon.romaji(in_string)
+    elif option % 5 == 3:
+        nippon.romaji(in_string)
     else:
-        katsu.romaji(str(barray))
+        hepburn.romaji(in_string)
 
 atheris.Setup(sys.argv, TestOneInput)
 atheris.Fuzz()

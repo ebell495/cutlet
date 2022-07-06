@@ -1,5 +1,5 @@
 project: cutlet
-target: fuzz
+target: romaji_decoder
 
 cmds:
     - cmd: /cutlet/fuzz/romaji_decoder.py

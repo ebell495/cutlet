@@ -2,5 +2,5 @@ project: cutlet
 target: fuzz
 
 cmds:
-    - cmd: /cutlet/fuzz/fuzz.py
+    - cmd: /cutlet/fuzz/romaji_decoder.py
       libfuzzer: true

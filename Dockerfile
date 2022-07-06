@@ -11,5 +11,5 @@ WORKDIR /cutlet
 
 # install cutlet
 RUN cd /cutlet && \
-    chmod +x fuzz/fuzz.py && \
+    chmod +x fuzz/romaji_decoder.py && \
     python3 -m pip install .
